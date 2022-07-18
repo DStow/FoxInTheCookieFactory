@@ -10,14 +10,34 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [ExpectedException(typeof(Exceptions.CardInvalidValueException))]
         public void Constructor_InvalidCardValueHigh_Exception()
         {
-            var card = new Card(12);
+            var card = new Card(12, Enumeration.CardSuitEnum.Moon);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exceptions.CardInvalidValueException))]
         public void Constructor_InvalidCardValueLow_Exception()
         {
-            var card = new Card(0);
+            var card = new Card(0, Enumeration.CardSuitEnum.Moon);
+        }
+
+        [TestMethod]
+        public void Constructor_StoreCardValue_CorrectValue()
+        {
+            int result = 9;
+
+            var card = new Card(result, Enumeration.CardSuitEnum.Key);
+
+            Assert.AreEqual(result, card.Value);
+        }
+
+        [TestMethod]
+        public void COnstructor_StoreCardSuit_CorrectValue()
+        {
+            Enumeration.CardSuitEnum result = Enumeration.CardSuitEnum.Bell;
+
+            var card = new Card(1, result);
+
+            Assert.AreEqual(result, card.Suit);
         }
     }
 }

@@ -20,9 +20,12 @@ namespace FoxInTheCookieFactory.GameModel
             }
         }
 
-        public Card(int value)
+        public Enumeration.CardSuitEnum Suit { get; set; }
+
+        public Card(int value, Enumeration.CardSuitEnum suit)
         {
             Value = value;
+            Suit = suit;
         }
     }
 }
