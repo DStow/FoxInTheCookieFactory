@@ -39,5 +39,27 @@ namespace FoxInTheCookieFactory.GameModel.Tests
             Assert.AreEqual(playerHandSize, game.Player1.Hand.Count);
             Assert.AreEqual(playerHandSize, game.Player2.Hand.Count);
         }
+
+        [TestMethod]
+        public void Initilize_DrawDecreeCard_SetsCard()
+        {
+            var game = new Game();
+
+            game.Initilize();
+
+            Assert.IsNotNull(game.DecreeCard);
+        }
+
+        [TestMethod]
+        public void Initilize_DrawDecreeCard_RemovesFromDeck()
+        {
+            int deckSizeMinusDecreeCard = 6;
+
+            var game = new Game();
+
+            game.Initilize();
+
+            Assert.AreEqual(deckSizeMinusDecreeCard, game.Deck.Cards.Count);
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace FoxInTheCookieFactory.GameModel
         public CardDeck Deck { get; private set; }
         public Player Player1 { get; private set; }
         public Player Player2 { get; private set; }
+        public Card DecreeCard { get; private set; }
 
         public void Initilize()
         {
@@ -17,6 +18,8 @@ namespace FoxInTheCookieFactory.GameModel
             Player2 = new Player();
 
             DealHands();
+
+            DrawDecreeCard();
         }
 
         private void DealHands()
@@ -29,6 +32,12 @@ namespace FoxInTheCookieFactory.GameModel
                 Player2.Hand.Add(Deck.Cards[0]);
                 Deck.Cards.RemoveAt(0);
             }
+        }
+
+        private void DrawDecreeCard()
+        {
+            DecreeCard = Deck.Cards[0];
+            Deck.Cards.RemoveAt(0);
         }
 
     }
