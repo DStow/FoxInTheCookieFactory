@@ -4,11 +4,13 @@ using System;
 namespace FoxInTheCookieFactory.GameModel.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class CardDeckTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Constructor_CorrectNumberOfCards()
         {
+            var cardDeck = new CardDeck();
+
         }
     }
 }
