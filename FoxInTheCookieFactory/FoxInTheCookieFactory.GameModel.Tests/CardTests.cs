@@ -31,7 +31,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         }
 
         [TestMethod]
-        public void COnstructor_StoreCardSuit_CorrectValue()
+        public void Constructor_StoreCardSuit_CorrectValue()
         {
             Enumeration.CardSuitEnum result = Enumeration.CardSuitEnum.Bell;
 
