@@ -27,5 +27,10 @@ namespace FoxInTheCookieFactory.GameModel
             Value = value;
             Suit = suit;
         }
+
+        public override string ToString()
+        {
+            return Enum.GetName(typeof(Enumeration.CardSuitEnum), Suit) + " " + Value.ToString();
+        }
     }
 }
