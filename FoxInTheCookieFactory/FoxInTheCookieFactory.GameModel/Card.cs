@@ -32,5 +32,12 @@ namespace FoxInTheCookieFactory.GameModel
         {
             return Enum.GetName(typeof(Enumeration.CardSuitEnum), Suit) + " " + Value.ToString();
         }
+
+        public bool IsSpecialCard()
+        {
+            List<int> specialValues = new List<int>(new int[] { 1, 3, 5, 7, 9, 11 });
+
+            return specialValues.Contains(Value);
+        }
     }
 }
