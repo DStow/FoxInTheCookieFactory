@@ -68,7 +68,73 @@ namespace FoxInTheCookieFactory.GameModel.Tests
             var game = new Game();
             game.Initilize();
 
-            Assert.AreEqual(game.Player1, game.CurrentPlayer);
+            Assert.AreEqual(game.Player1, game.LeadingPlayer);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exceptions.WrongPlayerTurnException))]
+        public void PlayPlayerCard_WrongPlayer_ThrowException()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            Player followingPlayer = game.FollowingPlayer;
+
+            game.PlayPlayerCard(followingPlayer,followingPlayer.Hand[0]);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exceptions.WrongCardException))]
+        public void PlayPlayerCard_UnownedCard_ThrowException()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            game.PlayPlayerCard(game.Player1, game.Deck.Cards[0]);
+        }
+
+        [TestMethod]
+        public void PlayPlayerCard_LeadingPlayer_SetsLeadingCard()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            Card cardToPlay = game.LeadingPlayer.Hand[0];
+
+            game.PlayPlayerCard(game.LeadingPlayer, cardToPlay);
+
+            Assert.AreEqual(game.LeadingCard, cardToPlay);
+        }
+
+        [TestMethod]
+        public void PlayPlayerCard_LeadingPlayer_RemoveFromPlayersHand()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            Card cardToPlay = game.LeadingPlayer.Hand[0];
+            Player playerToPlay = game.LeadingPlayer;
+
+            game.PlayPlayerCard(playerToPlay, cardToPlay);
+
+            Assert.IsFalse(playerToPlay.Hand.Contains(cardToPlay));
+        }
+
+        [TestMethod]
+        public void PlayPlayerCard_FollowingPlayer_SetsFollowingCard()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var leadingPlayer = game.LeadingPlayer;
+            var followingPlayer = game.FollowingPlayer;
+            var followingCard = followingPlayer.Hand[0];
+
+            game.PlayPlayerCard(leadingPlayer, leadingPlayer.Hand[0]);
+
+            game.PlayPlayerCard(followingPlayer, followingCard);
+
+            Assert.AreEqual(game.FollowingCard, followingCard);
         }
     }
 }

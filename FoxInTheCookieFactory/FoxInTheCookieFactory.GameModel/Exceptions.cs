@@ -11,4 +11,23 @@ namespace FoxInTheCookieFactory.GameModel.Exceptions
 
         }
     }
+
+    public class WrongPlayerTurnException : ApplicationException
+    {
+        public WrongPlayerTurnException(Player incorrectPlayer, Player correctPlayer)
+            : base("It is not " + incorrectPlayer.Name + " turn. It's " + correctPlayer.Name)
+        {
+
+        }
+    }
+
+    public class WrongCardException : ApplicationException
+    {
+
+        public WrongCardException(Card card, Player player)
+            : base(player.Name + " does not have the card " + card.ToString())
+        {
+
+        }
+    }
 }
