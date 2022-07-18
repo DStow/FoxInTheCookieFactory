@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxInTheCookieFactory.Android", "FoxInTheCookieFactory.Android\FoxInTheCookieFactory.Android.csproj", "{D13E2B5C-0449-4D6E-8938-C86124E55F1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxInTheCookieFactory.GameModel", "FoxInTheCookieFactory.GameModel\FoxInTheCookieFactory.GameModel.csproj", "{43E34C46-67EB-48AD-9843-EA731D5E791D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D13E2B5C-0449-4D6E-8938-C86124E55F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13E2B5C-0449-4D6E-8938-C86124E55F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13E2B5C-0449-4D6E-8938-C86124E55F1D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D13E2B5C-0449-4D6E-8938-C86124E55F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13E2B5C-0449-4D6E-8938-C86124E55F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13E2B5C-0449-4D6E-8938-C86124E55F1D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{43E34C46-67EB-48AD-9843-EA731D5E791D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E34C46-67EB-48AD-9843-EA731D5E791D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E34C46-67EB-48AD-9843-EA731D5E791D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E34C46-67EB-48AD-9843-EA731D5E791D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {052C14BA-3CFE-4DB1-BFF2-0CBB4CEF24E2}
+	EndGlobalSection
+EndGlobal
