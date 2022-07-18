@@ -20,7 +20,7 @@ namespace FoxInTheCookieFactory.GameModel.CardShufflers
                 n--;
                 int k = rng.Next(n + 1);
                 Card value = cardsClone[k];
-                cardsClone[k] = cards[n];
+                cardsClone[k] = cardsClone[n];
                 cardsClone[n] = value;
             }
 
