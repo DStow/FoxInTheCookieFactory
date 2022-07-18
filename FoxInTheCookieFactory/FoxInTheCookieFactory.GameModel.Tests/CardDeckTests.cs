@@ -47,5 +47,16 @@ namespace FoxInTheCookieFactory.GameModel.Tests
                 Assert.AreEqual(cardsPerValue, valueCards.Count());
             }
         }
+
+        [TestMethod]
+        public void Constructor_ShuffleDeck_Shuffled()
+        {
+            var cardDeck = new CardDeck();
+
+            // How to assert a random thing?a
+            Assert.IsFalse(cardDeck.Cards[0].Suit == Enumeration.CardSuitEnum.Bell && cardDeck.Cards[0].Value == 1);
+            Assert.IsFalse(cardDeck.Cards[2].Suit == Enumeration.CardSuitEnum.Moon && cardDeck.Cards[2].Value == 1);
+            Assert.IsFalse(cardDeck.Cards[12].Suit == Enumeration.CardSuitEnum.Bell && cardDeck.Cards[12].Value == 4);
+        }
     }
 }

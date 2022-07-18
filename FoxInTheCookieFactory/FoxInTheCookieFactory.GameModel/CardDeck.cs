@@ -11,6 +11,7 @@ namespace FoxInTheCookieFactory.GameModel
         public CardDeck()
         {
             PopulateCardSet();
+            ShuffleCards();
         }
 
         private void PopulateCardSet()
@@ -23,6 +24,12 @@ namespace FoxInTheCookieFactory.GameModel
                 Cards.Add(new Card(i, Enumeration.CardSuitEnum.Key));
                 Cards.Add(new Card(i, Enumeration.CardSuitEnum.Moon));
             }
+        }
+
+        private void ShuffleCards()
+        {
+            var cardShuffler = new CardShufflers.FisherShuffler();
+            Cards = cardShuffler.Shuffle(Cards);
         }
     }
 }
