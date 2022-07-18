@@ -10,12 +10,16 @@ namespace FoxInTheCookieFactory.GameModel
         public Player Player1 { get; private set; }
         public Player Player2 { get; private set; }
         public Card DecreeCard { get; private set; }
+        public Player CurrentPlayer { get; private set; }
 
         public void Initilize()
         {
             Deck = new CardDeck();
             Player1 = new Player();
             Player2 = new Player();
+
+            // We assign the player one for the first game
+            CurrentPlayer = Player1;
 
             DealHands();
 
@@ -25,7 +29,7 @@ namespace FoxInTheCookieFactory.GameModel
         private void DealHands()
         {
             int handSize = 13;
-            for(int i = 0; i < handSize; i++)
+            for (int i = 0; i < handSize; i++)
             {
                 Player1.Hand.Add(Deck.Cards[0]);
                 Deck.Cards.RemoveAt(0);
@@ -39,6 +43,5 @@ namespace FoxInTheCookieFactory.GameModel
             DecreeCard = Deck.Cards[0];
             Deck.Cards.RemoveAt(0);
         }
-
     }
 }

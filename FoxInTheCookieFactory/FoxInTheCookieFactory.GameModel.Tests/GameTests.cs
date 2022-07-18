@@ -61,5 +61,14 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Assert.AreEqual(deckSizeMinusDecreeCard, game.Deck.Cards.Count);
         }
+
+        [TestMethod]
+        public void Initilize_SetCurrentPlayerToPlayer1()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            Assert.AreEqual(game.Player1, game.CurrentPlayer);
+        }
     }
 }
