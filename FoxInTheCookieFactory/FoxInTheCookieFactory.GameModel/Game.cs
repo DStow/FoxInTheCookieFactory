@@ -68,11 +68,12 @@ namespace FoxInTheCookieFactory.GameModel
             // Remove the played card from the player hand
             player.Hand.Remove(card);
 
-            if(card.IsSpecialCard())
+            if (card.IsSpecialCard())
             {
                 // Do special stuff here... (we pass it in as a delegate so the 
                 // parent game app can get user input on it.
-                await specialCardDelegate(player, player == LeadingPlayer, card);
+                if (specialCardDelegate != null)
+                    await specialCardDelegate(player, player == LeadingPlayer, card);
             }
         }
     }

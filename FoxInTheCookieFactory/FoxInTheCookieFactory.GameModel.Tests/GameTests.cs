@@ -80,7 +80,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Player followingPlayer = game.FollowingPlayer;
 
-            game.PlayPlayerCard(followingPlayer,followingPlayer.Hand[0]);
+            game.PlayPlayerCard(followingPlayer, followingPlayer.Hand[0], null);
         }
 
         [TestMethod]
@@ -90,7 +90,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
             var game = new Game();
             game.Initilize();
 
-            game.PlayPlayerCard(game.Player1, game.Deck.Cards[0]);
+            game.PlayPlayerCard(game.LeadingPlayer, game.Deck.Cards[0], null);
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Card cardToPlay = game.LeadingPlayer.Hand[0];
 
-            game.PlayPlayerCard(game.LeadingPlayer, cardToPlay);
+            game.PlayPlayerCard(game.LeadingPlayer, cardToPlay, null);
 
             Assert.AreEqual(game.LeadingCard, cardToPlay);
         }
@@ -115,7 +115,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
             Card cardToPlay = game.LeadingPlayer.Hand[0];
             Player playerToPlay = game.LeadingPlayer;
 
-            game.PlayPlayerCard(playerToPlay, cardToPlay);
+            game.PlayPlayerCard(playerToPlay, cardToPlay, null);
 
             Assert.IsFalse(playerToPlay.Hand.Contains(cardToPlay));
         }
@@ -130,9 +130,9 @@ namespace FoxInTheCookieFactory.GameModel.Tests
             var followingPlayer = game.FollowingPlayer;
             var followingCard = followingPlayer.Hand[0];
 
-            game.PlayPlayerCard(leadingPlayer, leadingPlayer.Hand[0]);
+            game.PlayPlayerCard(leadingPlayer, leadingPlayer.Hand[0], null);
 
-            game.PlayPlayerCard(followingPlayer, followingCard);
+            game.PlayPlayerCard(followingPlayer, followingCard, null);
 
             Assert.AreEqual(game.FollowingCard, followingCard);
         }
