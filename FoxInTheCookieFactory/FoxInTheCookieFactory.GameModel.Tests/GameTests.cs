@@ -136,5 +136,89 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Assert.AreEqual(game.FollowingCard, followingCard);
         }
+
+        [TestMethod]
+        public void GetTrickWinner_LeadHigherValueSameDecreeNoSpecial_LeadingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 6;
+            int followingValue = 2;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Key), new Card(5, Enumeration.CardSuitEnum.Key));
+
+            Assert.AreEqual(game.LeadingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_LeadHigherValueDifferentDecreeNoSpecial_LeadingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 6;
+            int followingValue = 2;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Key), new Card(5, Enumeration.CardSuitEnum.Bell));
+
+            Assert.AreEqual(game.LeadingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_FollowingHigherValueSameDecreeNoSpecial_FollowingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 2;
+            int followingValue = 6;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Key), new Card(5, Enumeration.CardSuitEnum.Key));
+
+            Assert.AreEqual(game.FollowingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_FollowingHigherValueDifferentDecreeNoSpecial_FollowingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 2;
+            int followingValue = 6;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Key), new Card(5, Enumeration.CardSuitEnum.Moon));
+
+            Assert.AreEqual(game.FollowingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_FollowingHigherValueDifferentDecreeLeadingWitch_LeadingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 9;
+            int followingValue = 10;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Key), new Card(5, Enumeration.CardSuitEnum.Moon));
+
+            Assert.AreEqual(game.LeadingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_LeadHigherValueDifferentDecreeFollowWitch_FollowingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 10;
+            int followingValue = 9;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Key), new Card(5, Enumeration.CardSuitEnum.Bell));
+
+            Assert.AreEqual(game.FollowingPlayer, winner);
+        }
     }
 }
