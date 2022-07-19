@@ -48,7 +48,7 @@ namespace FoxInTheCookieFactory.GameModel
             Deck.Cards.RemoveAt(0);
         }
 
-        public void PlayPlayerCard(Player player, Card card)
+        public async void PlayPlayerCard(Player player, Card card, Delegates.ActionSpecialCardDelegate specialCardDelegate)
         {
             if (player != LeadingPlayer && LeadingCard == null)
                 throw new Exceptions.WrongPlayerTurnException(player, LeadingPlayer);
@@ -67,6 +67,13 @@ namespace FoxInTheCookieFactory.GameModel
 
             // Remove the played card from the player hand
             player.Hand.Remove(card);
+
+            if(card.IsSpecialCard())
+            {
+                // Do special stuff here... (we pass it in as a delegate so the 
+                // parent game app can get user input on it.
+                await specialCardDelegate(player, player == LeadingPlayer, card);
+            }
         }
     }
 }
