@@ -85,7 +85,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
         [TestMethod]
         [ExpectedException(typeof(Exceptions.WrongCardException))]
-        public void PlayPlayerCard_UnownedCard_ThrowException()
+        public void PlayPlayerCard_WrongCard_ThrowException()
         {
             var game = new Game();
             game.Initilize();
