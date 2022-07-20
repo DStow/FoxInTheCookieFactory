@@ -263,5 +263,43 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Assert.IsTrue(game.HasGameEnded());
         }
+
+        [TestMethod]
+        public void AdvanceToNextTrick_LeadingPlayerWonNoSpecials_LeaderStays()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var leadingPlayer = game.LeadingPlayer;
+
+            game.LeadingPlayer.Hand.Add(new Card(10, Enumeration.CardSuitEnum.Moon));
+            game.FollowingPlayer.Hand.Add(new Card(8, Enumeration.CardSuitEnum.Moon));
+
+            game.PlayPlayerCard(game.LeadingPlayer, game.LeadingPlayer.Hand[13], null);
+            game.PlayPlayerCard(game.FollowingPlayer, game.FollowingPlayer.Hand[13], null);
+
+            game.AdvanceToNextTrick(game.GetTrickWinner());
+
+            Assert.AreEqual(leadingPlayer, game.LeadingPlayer);
+        }
+
+        [TestMethod]
+        public void AdvanceToNextTrick_FollowingPlayerWonNoSpecials_FollowingBecomesLeader()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var followingPlayer = game.FollowingPlayer;
+
+            game.LeadingPlayer.Hand.Add(new Card(2, Enumeration.CardSuitEnum.Moon));
+            game.FollowingPlayer.Hand.Add(new Card(8, Enumeration.CardSuitEnum.Moon));
+
+            game.PlayPlayerCard(game.LeadingPlayer, game.LeadingPlayer.Hand[13], null);
+            game.PlayPlayerCard(game.FollowingPlayer, game.FollowingPlayer.Hand[13], null);
+
+            game.AdvanceToNextTrick(game.GetTrickWinner());
+
+            Assert.AreEqual(followingPlayer, game.LeadingPlayer);
+        }
     }
 }

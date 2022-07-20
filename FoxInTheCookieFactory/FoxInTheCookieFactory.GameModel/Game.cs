@@ -128,6 +128,11 @@ namespace FoxInTheCookieFactory.GameModel
 
             return trickWinner;
         }
+
+        public void AdvanceToNextTrick(Player trickWinner)
+        {
+           
+        }
     
         public bool HasGameEnded()
         {
