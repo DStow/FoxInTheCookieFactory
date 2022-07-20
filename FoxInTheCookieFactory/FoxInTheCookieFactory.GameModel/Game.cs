@@ -101,24 +101,24 @@ namespace FoxInTheCookieFactory.GameModel
                 else
                     trickWinner = FollowingPlayer;
             }
-            else if(leadingCard.Value == 9)
+            else if (leadingCard.Value == 9)
             {
                 // Witch
                 trickWinner = LeadingPlayer;
             }
-            else if(followingCard.Value == 9)
+            else if (followingCard.Value == 9)
             {
                 trickWinner = FollowingPlayer;
             }
-            else if(followingCard.Suit == decreeSuit)
+            else if (followingCard.Suit == decreeSuit)
             {
                 trickWinner = FollowingPlayer;
             }
-            else if(leadingCard.Suit == decreeSuit)
+            else if (leadingCard.Suit == decreeSuit)
             {
                 trickWinner = LeadingPlayer;
             }
-            else if(leadingCard.Suit == followingCard.Suit)
+            else if (leadingCard.Suit == followingCard.Suit)
             {
                 if (leadingCard.Value > followingCard.Value)
                     trickWinner = LeadingPlayer;
@@ -131,9 +131,30 @@ namespace FoxInTheCookieFactory.GameModel
 
         public void AdvanceToNextTrick(Player trickWinner)
         {
-           
+            var lPlayer = LeadingPlayer;
+            var fPlayer = FollowingPlayer;
+
+            if (FollowingPlayer == trickWinner)
+            {
+                if (LeadingCard.Value != 1)
+                {
+                    LeadingPlayer = fPlayer;
+                    FollowingPlayer = lPlayer;
+                }
+            }
+            else if(LeadingPlayer == trickWinner)
+            {
+                if(FollowingCard.Value == 1)
+                {
+                    LeadingPlayer = fPlayer;
+                    FollowingPlayer = lPlayer;
+                }
+            }
+
+            LeadingCard = null;
+            FollowingCard = null;
         }
-    
+
         public bool HasGameEnded()
         {
             return (LeadingPlayer.Hand.Count == 0 && FollowingPlayer.Hand.Count == 0);
