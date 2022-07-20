@@ -15,11 +15,11 @@ namespace FoxInTheCookieFactory.GameModel
         public Card LeadingCard { get; set; }
         public Card FollowingCard { get; set; }
 
-        public void Initilize()
+        public void Initilize(string player1Name = "Player 1", string player2Name = "Player 2")
         {
             Deck = new CardDeck();
-            Player1 = new Player("Player 1");
-            Player2 = new Player("Player 2");
+            Player1 = new Player(player1Name);
+            Player2 = new Player(player2Name);
 
             // We assign the player one for the first game
             LeadingPlayer = Player1;
@@ -79,7 +79,13 @@ namespace FoxInTheCookieFactory.GameModel
             if (FollowingCard != null)
             {
                 // Check outcome
+
             }
+        }
+
+        public Player GetTrickWinner()
+        {
+            return GetTrickWinner(LeadingCard, FollowingCard, DecreeCard);
         }
 
         public Player GetTrickWinner(Card leadingCard, Card followingCard, Card decreeCard)
