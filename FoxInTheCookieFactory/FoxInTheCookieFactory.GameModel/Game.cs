@@ -122,5 +122,10 @@ namespace FoxInTheCookieFactory.GameModel
 
             return trickWinner;
         }
+    
+        public bool HasGameEnded()
+        {
+            return (LeadingPlayer.Hand.Count == 0 && FollowingPlayer.Hand.Count == 0);
+        }
     }
 }

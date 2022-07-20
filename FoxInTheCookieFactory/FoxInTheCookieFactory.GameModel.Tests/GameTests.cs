@@ -220,5 +220,48 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Assert.AreEqual(game.FollowingPlayer, winner);
         }
+
+        [TestMethod]
+        public void HasGameEnded_BothPlayersHaveCards_False()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            Assert.IsFalse(game.HasGameEnded());
+        }
+
+        [TestMethod]
+        public void HasGameEnded_LeadHasCards_False()
+        {
+            var game = new Game();
+            game.Initilize();
+            // Pretty sure the game should never be in this state anyway..
+            game.FollowingPlayer.Hand.Clear();
+
+            Assert.IsFalse(game.HasGameEnded());
+        }
+
+        [TestMethod]
+        public void HasGameEnded_FollowingHasCards_False()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            game.LeadingPlayer.Hand.Clear();
+
+            Assert.IsFalse(game.HasGameEnded());
+        }
+
+        [TestMethod]
+        public void HasGameEnded_BothPlayersHaveNoCards_True()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            game.LeadingPlayer.Hand.Clear();
+            game.FollowingPlayer.Hand.Clear();
+
+            Assert.IsTrue(game.HasGameEnded());
+        }
     }
 }
