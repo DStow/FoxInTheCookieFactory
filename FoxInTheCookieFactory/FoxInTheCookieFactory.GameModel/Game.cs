@@ -75,12 +75,6 @@ namespace FoxInTheCookieFactory.GameModel
                 if (specialCardDelegate != null)
                     specialCardDelegate(player, player == LeadingPlayer, card).Wait();
             }
-
-            if (FollowingCard != null)
-            {
-                // Check outcome
-
-            }
         }
 
         public Player GetTrickWinner()
