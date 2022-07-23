@@ -223,6 +223,20 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         }
 
         [TestMethod]
+        public void GetTrickWinner_BothOtherSuitLeaderHighNoSpecial_LeaderWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            int leadingValue = 4;
+            int followingValue = 2;
+
+            var winner = game.GetTrickWinner(new Card(leadingValue, Enumeration.CardSuitEnum.Key), new Card(followingValue, Enumeration.CardSuitEnum.Moon), new Card(5, Enumeration.CardSuitEnum.Bell));
+
+            Assert.AreEqual(game.LeadingPlayer, winner);
+        }
+
+        [TestMethod]
         public void HasGameEnded_BothPlayersHaveCards_False()
         {
             var game = new Game();

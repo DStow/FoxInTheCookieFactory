@@ -123,6 +123,8 @@ namespace FoxInTheCookieFactory.GameModel
                 else
                     trickWinner = FollowingPlayer;
             }
+            else if (followingCard.Suit != leadingCard.Suit)
+                trickWinner = LeadingPlayer;
 
             return trickWinner;
         }
