@@ -383,5 +383,100 @@ namespace FoxInTheCookieFactory.GameModel.Tests
             Assert.IsTrue(leadingPlayer.WonTricks[0].Contains(leadingCard));
             Assert.IsTrue(leadingPlayer.WonTricks[0].Contains(followingCard));
         }
+
+        [TestMethod]
+        public void CheckWinner_Player1CleanWin_Player1Wins()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var player1 = game.Player1;
+            player1.TotalScore = 22;
+            player1.PreviousRoundScore = 10;
+
+            var player2 = game.Player2;
+            player2.TotalScore = 15;
+            player2.PreviousRoundScore = 4;
+
+            var winner = game.CheckForWinner();
+
+            Assert.AreEqual(player1, winner);
+        }
+
+        [TestMethod]
+        public void CheckWinner_Player2CleanWin_Player2Wins()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var player1 = game.Player1;
+            player1.TotalScore = 10;
+            player1.PreviousRoundScore = 10;
+
+            var player2 = game.Player2;
+            player2.TotalScore = 24;
+            player2.PreviousRoundScore = 4;
+
+            var winner = game.CheckForWinner();
+
+            Assert.AreEqual(player2, winner);
+        }
+
+        [TestMethod]
+        public void CheckWinner_DrawPlayer1PreviousHigh_Player1Wins()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var player1 = game.Player1;
+            player1.TotalScore = 24;
+            player1.PreviousRoundScore = 10;
+
+            var player2 = game.Player2;
+            player2.TotalScore = 24;
+            player2.PreviousRoundScore = 4;
+
+            var winner = game.CheckForWinner();
+
+            Assert.AreEqual(player1, winner);
+        }
+
+        [TestMethod]
+        public void CheckWinner_DrawPlayer2PreviousHigh_Player2Wins()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var player1 = game.Player1;
+            player1.TotalScore = 24;
+            player1.PreviousRoundScore = 4;
+
+            var player2 = game.Player2;
+            player2.TotalScore = 24;
+            player2.PreviousRoundScore = 10;
+
+            var winner = game.CheckForWinner();
+
+            Assert.AreEqual(player2, winner);
+        }
+
+        [TestMethod]
+        public void CheckWinner_BothUnderTarget_NullReturn()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var player1 = game.Player1;
+            player1.TotalScore = 4;
+            player1.PreviousRoundScore = 4;
+
+            var player2 = game.Player2;
+            player2.TotalScore = 10;
+            player2.PreviousRoundScore = 10;
+
+            var winner = game.CheckForWinner();
+
+            Assert.IsNull(winner);
+        }
     }
 }

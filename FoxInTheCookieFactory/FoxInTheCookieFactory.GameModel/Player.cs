@@ -8,7 +8,6 @@ namespace FoxInTheCookieFactory.GameModel
     {
         public string Name { get; set; }
         public List<Card> Hand { get; set; } = new List<Card>();
-        public int Score { get; set; } = 0;
         public List<Card[]> WonTricks { get; set; } = new List<Card[]>();
         public int TotalScore { get; set; } = 0;
         public int PreviousRoundScore { get; set; } = 0;

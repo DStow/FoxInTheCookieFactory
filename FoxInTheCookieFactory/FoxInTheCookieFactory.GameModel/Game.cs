@@ -17,7 +17,6 @@ namespace FoxInTheCookieFactory.GameModel
 
         public void Initilize(string player1Name = "Player 1", string player2Name = "Player 2")
         {
-            Deck = new CardDeck();
             Player1 = new Player(player1Name);
             Player2 = new Player(player2Name);
 
@@ -25,8 +24,13 @@ namespace FoxInTheCookieFactory.GameModel
             LeadingPlayer = Player1;
             FollowingPlayer = Player2;
 
-            DealHands();
+            ResetDeckAndDeal();
+        }
 
+        public void ResetDeckAndDeal()
+        {
+            Deck = new CardDeck();
+            DealHands();
             DrawDecreeCard();
         }
 
@@ -155,6 +159,36 @@ namespace FoxInTheCookieFactory.GameModel
         public bool HasGameEnded()
         {
             return (LeadingPlayer.Hand.Count == 0 && FollowingPlayer.Hand.Count == 0);
+        }
+
+        public void ScoreUpPlayers()
+        {
+            // Score each player
+            int player1Score = ScoreCalculator.CalculatePlayerWonTricksScore(Player1);
+            int player2Score = ScoreCalculator.CalculatePlayerWonTricksScore(Player2);
+
+            Player1.TotalScore += player1Score;
+            Player1.PreviousRoundScore = player1Score;
+            Player2.TotalScore += player2Score;
+            Player2.PreviousRoundScore = player2Score;
+
+            // Won tricks
+            Player1.WonTricks = new List<Card[]>();
+            Player2.WonTricks = new List<Card[]>();
+        }
+
+        public Player CheckForWinner()
+        {
+            if (Player1.TotalScore >= 21 && Player2.TotalScore >= 21 && Player1.TotalScore == Player2.TotalScore)
+                return Player1.PreviousRoundScore > Player2.PreviousRoundScore ? Player1 : Player2;
+
+            if (Player1.TotalScore >= 21 && Player2.TotalScore < Player1.TotalScore)
+                return Player1;
+
+            if (Player2.TotalScore >= 21 && Player1.TotalScore < Player2.TotalScore)
+                return Player2;
+
+            return null;
         }
     }
 }

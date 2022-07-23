@@ -31,6 +31,12 @@ namespace FoxInTheCookieFactory.ConsoleApp
                 game.AdvanceToNextTrick(trickWinner);
             }
 
+            game.ScoreUpPlayers();
+
+            // Check for winner
+
+
+
             // By being here the game has ended...
             // Calculate scores
             // Does a player meant the minimum win score limit (13?)
