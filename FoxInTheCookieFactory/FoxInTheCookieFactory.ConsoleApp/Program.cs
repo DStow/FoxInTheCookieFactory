@@ -25,6 +25,7 @@ namespace FoxInTheCookieFactory.ConsoleApp
                 Console.WriteLine();
                 var trickWinner = game.GetTrickWinner();
                 Console.WriteLine(trickWinner.Name + " has won this trick!");
+                game.AdvanceToNextTrick(trickWinner);
             }
 
 
