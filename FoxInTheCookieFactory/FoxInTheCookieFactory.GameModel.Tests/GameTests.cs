@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 namespace FoxInTheCookieFactory.GameModel.Tests
 {
@@ -358,6 +359,29 @@ namespace FoxInTheCookieFactory.GameModel.Tests
 
             Assert.IsNull(game.LeadingCard);
             Assert.IsNull(game.FollowingCard);
+        }
+
+        [TestMethod]    
+        public void AdvanceToNextTrick_WinnerGetsWonTrick_Assigned()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var leadingPlayer = game.LeadingPlayer;
+
+            game.LeadingPlayer.Hand.Add(new Card(10, Enumeration.CardSuitEnum.Moon));
+            game.FollowingPlayer.Hand.Add(new Card(8, Enumeration.CardSuitEnum.Moon));
+
+            var leadingCard = game.LeadingPlayer.Hand[13];
+            var followingCard = game.FollowingPlayer.Hand[13];
+
+            game.PlayPlayerCard(game.LeadingPlayer, leadingCard, null);
+            game.PlayPlayerCard(game.FollowingPlayer, followingCard, null);
+
+            game.AdvanceToNextTrick(game.GetTrickWinner());
+
+            Assert.IsTrue(leadingPlayer.WonTricks[0].Contains(leadingCard));
+            Assert.IsTrue(leadingPlayer.WonTricks[0].Contains(followingCard));
         }
     }
 }

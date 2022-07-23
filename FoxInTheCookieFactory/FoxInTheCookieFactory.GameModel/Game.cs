@@ -136,14 +136,17 @@ namespace FoxInTheCookieFactory.GameModel
                     FollowingPlayer = lPlayer;
                 }
             }
-            else if(LeadingPlayer == trickWinner)
+            else if (LeadingPlayer == trickWinner)
             {
-                if(FollowingCard.Value == 1)
+                if (FollowingCard.Value == 1)
                 {
                     LeadingPlayer = fPlayer;
                     FollowingPlayer = lPlayer;
                 }
             }
+
+            var wonTrick = new Card[] { LeadingCard, FollowingCard };
+            trickWinner.WonTricks.Add(wonTrick);
 
             LeadingCard = null;
             FollowingCard = null;

@@ -20,15 +20,20 @@ namespace FoxInTheCookieFactory.ConsoleApp
                 var lCard = GetPlayerPlayCard(game.LeadingPlayer);
                 game.PlayPlayerCard(game.LeadingPlayer, lCard, null);
                 Console.WriteLine();
+
                 var fCard = GetPlayerPlayCard(game.FollowingPlayer);
                 game.PlayPlayerCard(game.FollowingPlayer, fCard, null);
                 Console.WriteLine();
+
                 var trickWinner = game.GetTrickWinner();
                 Console.WriteLine(trickWinner.Name + " has won this trick!");
+
                 game.AdvanceToNextTrick(trickWinner);
             }
 
-
+            // By being here the game has ended...
+            // Calculate scores
+            // Does a player meant the minimum win score limit (13?)
 
 
 
