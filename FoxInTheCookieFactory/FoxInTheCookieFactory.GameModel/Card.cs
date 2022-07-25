@@ -30,7 +30,7 @@ namespace FoxInTheCookieFactory.GameModel
 
         public override string ToString()
         {
-            return Enum.GetName(typeof(Enumeration.CardSuitEnum), Suit) + " " + Value.ToString();
+            return Enum.GetName(typeof(Enumeration.CardSuitEnum), Suit) + " " + Value.ToString() + (IsSpecialCard() ? " (" + GetSpecialCardName() + ")" : "");
         }
 
         public bool IsSpecialCard()
@@ -38,6 +38,21 @@ namespace FoxInTheCookieFactory.GameModel
             List<int> specialValues = new List<int>(new int[] { 1, 3, 5, 7, 9, 11 });
 
             return specialValues.Contains(Value);
+        }
+
+        public string GetSpecialCardName()
+        {
+            switch (Value)
+            {
+                case 1: return "Swan";
+                case 3: return "Fox";
+                case 5: return "Woodcutter";
+                case 7: return "Treasure";
+                case 9: return "Witch";
+                case 11: return "Monarch";
+            }
+
+            return null;
         }
     }
 }
