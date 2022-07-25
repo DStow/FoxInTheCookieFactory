@@ -36,6 +36,9 @@ namespace FoxInTheCookieFactory.GameModel
 
         private void DealHands()
         {
+            Player1.Hand.Clear();
+            Player2.Hand.Clear();
+
             int handSize = 13;
             for (int i = 0; i < handSize; i++)
             {
