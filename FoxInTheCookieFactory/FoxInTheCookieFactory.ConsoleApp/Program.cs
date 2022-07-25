@@ -12,15 +12,9 @@ namespace FoxInTheCookieFactory.ConsoleApp
         {
             var game = new GameModel.Game();
             game.Initilize("P1", "P2");
+
+            // Starts the game loop
             PlayRound(game);
-
-
-            // By being here the game has ended...
-            // Calculate scores
-            // Does a player meant the minimum win score limit (13?)
-
-
-
         }
 
         private static void PlayRound(GameModel.Game game)
