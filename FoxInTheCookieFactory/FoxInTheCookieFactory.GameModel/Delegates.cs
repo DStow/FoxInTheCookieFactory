@@ -5,5 +5,7 @@ using System.Threading.Tasks;
 
 namespace FoxInTheCookieFactory.GameModel.Delegates
 {
-    public delegate Task ActionSpecialCardDelegate(Player player, bool isLeading, Card card);
+    public delegate Card ActionSpecialCardDelegate(Player player, bool isLeading, Card card);
+
+    public delegate Card MonarchPlayedDelegate(Game game, Player targetPlayer, List<Card> pickableCards);
 }

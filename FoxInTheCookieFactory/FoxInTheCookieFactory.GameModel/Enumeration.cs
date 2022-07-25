@@ -11,4 +11,14 @@ namespace FoxInTheCookieFactory.GameModel.Enumeration
         Key,
         Moon
     }
+
+    public enum SpecialCardEnum
+    {
+        Swan = 1,
+        Fox = 3,
+        Woodcutter = 5,
+        Trasure = 7,
+        Witch = 9,
+        Monarch = 11
+    }
 }

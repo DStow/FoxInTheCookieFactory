@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace FoxInTheCookieFactory.GameModel
 {
@@ -14,6 +15,14 @@ namespace FoxInTheCookieFactory.GameModel
         public Player FollowingPlayer { get; set; }
         public Card LeadingCard { get; set; }
         public Card FollowingCard { get; set; }
+
+
+        private Delegates.MonarchPlayedDelegate monarchPlayedDelegate;
+
+        public Game(Delegates.MonarchPlayedDelegate monarchPlayedDelegate)
+        {
+            this.monarchPlayedDelegate = monarchPlayedDelegate;
+        }
 
         public void Initilize(string player1Name = "Player 1", string player2Name = "Player 2")
         {
@@ -79,8 +88,12 @@ namespace FoxInTheCookieFactory.GameModel
             {
                 // Do special stuff here... (we pass it in as a delegate so the 
                 // parent game app can get user input on it.
-                if (specialCardDelegate != null)
-                    specialCardDelegate(player, player == LeadingPlayer, card).Wait();
+                if (card.Value == (int)Enumeration.SpecialCardEnum.Monarch && player == LeadingPlayer)
+                {
+                    var playableCards = SpecialCardHelper.GetMonarchReactionPlayableCards(FollowingPlayer, card);
+                    var pickedCard = monarchPlayedDelegate(this, FollowingPlayer, playableCards);
+                    PlayPlayerCard(FollowingPlayer, pickedCard, null);
+                }
             }
         }
 

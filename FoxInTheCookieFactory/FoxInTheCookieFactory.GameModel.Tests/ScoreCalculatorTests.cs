@@ -10,7 +10,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_0Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -24,7 +24,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_1Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -39,7 +39,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_2Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -55,7 +55,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_3Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -72,7 +72,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_4Score0Treasure_1Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -90,7 +90,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_5Score0Treasure_2Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -109,7 +109,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_6Score0Treasure_3Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -129,7 +129,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_7Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -150,7 +150,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_8Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -172,7 +172,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_9Score0Treasure_6Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -195,7 +195,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_10Score0Treasure_0Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -219,7 +219,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_11Score0Treasure_0Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -244,7 +244,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_12Score0Treasure_0Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -270,7 +270,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_13Score0Treasure_0Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -297,7 +297,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_3Score1Treasure_7Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -314,7 +314,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_3Score2Treasure_8Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;
@@ -331,7 +331,7 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         [TestMethod]
         public void CalculatePlayerWonTricksScore_3Scor3Treasure_9Points()
         {
-            var game = new Game();
+            var game = new Game(null);
             game.Initilize();
 
             var player1 = game.Player1;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FoxInTheCookieFactory.GameModel;
 
 namespace FoxInTheCookieFactory.ConsoleApp
 {
@@ -10,7 +11,7 @@ namespace FoxInTheCookieFactory.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var game = new GameModel.Game();
+            var game = new Game(MonarchPlayed);
             game.Initilize("P1", "P2");
 
             // Starts the game loop
@@ -30,9 +31,12 @@ namespace FoxInTheCookieFactory.ConsoleApp
                 game.PlayPlayerCard(game.LeadingPlayer, lCard, null);
                 Console.WriteLine();
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                var fCard = GetPlayerPlayCard(game.FollowingPlayer);
-                game.PlayPlayerCard(game.FollowingPlayer, fCard, null);
+                if (lCard.Value != (int)GameModel.Enumeration.SpecialCardEnum.Monarch)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    var fCard = GetPlayerPlayCard(game.FollowingPlayer);
+                    game.PlayPlayerCard(game.FollowingPlayer, fCard, null);
+                }
                 Console.WriteLine();
 
                 var trickWinner = game.GetTrickWinner();
@@ -81,6 +85,19 @@ namespace FoxInTheCookieFactory.ConsoleApp
             int index = Convert.ToInt32(Console.ReadLine());
 
             return player.Hand[index];
+        }
+
+        static Card MonarchPlayed(Game game, Player targetPlayer, List<Card> pickableCards)
+        {
+            Console.WriteLine(game.LeadingPlayer.Name + " has played a Monarch! Pick your response:");
+            for(int i = 0; i < pickableCards.Count; i++)
+            {
+                Console.WriteLine(i + ": " + pickableCards[i]);
+            }
+
+            int index = Convert.ToInt32(Console.ReadLine());
+
+            return pickableCards[index];
         }
     }
 }
