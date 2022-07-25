@@ -237,6 +237,39 @@ namespace FoxInTheCookieFactory.GameModel.Tests
         }
 
         [TestMethod]
+        public void GetTrickWinner_BothSwansLeaderMatchDecree_LeaderWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var winner = game.GetTrickWinner(new Card(1, Enumeration.CardSuitEnum.Key), new Card(1, Enumeration.CardSuitEnum.Moon), new Card(5, Enumeration.CardSuitEnum.Key));
+
+            Assert.AreEqual(game.LeadingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_BothSwansFollowingMatchDecree_FollowingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var winner = game.GetTrickWinner(new Card(1, Enumeration.CardSuitEnum.Key), new Card(1, Enumeration.CardSuitEnum.Moon), new Card(5, Enumeration.CardSuitEnum.Moon));
+
+            Assert.AreEqual(game.FollowingPlayer, winner);
+        }
+
+        [TestMethod]
+        public void GetTrickWinner_BothSwansNotMatchingDecree_LeadingWin()
+        {
+            var game = new Game();
+            game.Initilize();
+
+            var winner = game.GetTrickWinner(new Card(1, Enumeration.CardSuitEnum.Key), new Card(1, Enumeration.CardSuitEnum.Moon), new Card(5, Enumeration.CardSuitEnum.Bell));
+
+            Assert.AreEqual(game.LeadingPlayer, winner);
+        }
+
+        [TestMethod]
         public void HasGameEnded_BothPlayersHaveCards_False()
         {
             var game = new Game();
