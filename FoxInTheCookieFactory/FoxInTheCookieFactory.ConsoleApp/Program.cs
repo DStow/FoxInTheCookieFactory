@@ -27,14 +27,14 @@ namespace FoxInTheCookieFactory.ConsoleApp
 
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.Green;
-                var lCard = GetPlayerPlayCard(game.LeadingPlayer);
+                var lCard = GetPlayerPlayCard(game, game.LeadingPlayer, true);
                 game.PlayPlayerCard(game.LeadingPlayer, lCard, null);
                 Console.WriteLine();
 
                 if (lCard.Value != (int)GameModel.Enumeration.SpecialCardEnum.Monarch)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    var fCard = GetPlayerPlayCard(game.FollowingPlayer);
+                    var fCard = GetPlayerPlayCard(game, game.FollowingPlayer, false);
                     game.PlayPlayerCard(game.FollowingPlayer, fCard, null);
                 }
                 Console.WriteLine();
@@ -72,19 +72,27 @@ namespace FoxInTheCookieFactory.ConsoleApp
             }
         }
 
-        static GameModel.Card GetPlayerPlayCard(GameModel.Player player)
+        static GameModel.Card GetPlayerPlayCard(GameModel.Game game, GameModel.Player player, bool isLeading)
         {
             Console.WriteLine(player.Name + " pick card to play");
 
-            for(int i = 0; i < player.Hand.Count; i++)
+            List<Card> cardsToPickFrom = new List<Card>();
+
+            if (isLeading)
+                cardsToPickFrom = player.Hand;
+            else
+                cardsToPickFrom = player.GetPlayableHandAsFollower(game.LeadingCard);
+   
+
+            for(int i = 0; i < cardsToPickFrom.Count; i++)
             {
-                Console.WriteLine(i + ": " + player.Hand[i]);
+                Console.WriteLine(i + ": " + cardsToPickFrom[i]);
             }
 
             // ToDo: Input check this
             int index = Convert.ToInt32(Console.ReadLine());
 
-            return player.Hand[index];
+            return cardsToPickFrom[index];
         }
 
         static Card MonarchPlayed(Game game, Player targetPlayer, List<Card> pickableCards)

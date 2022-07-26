@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace FoxInTheCookieFactory.GameModel
 {
@@ -15,6 +16,18 @@ namespace FoxInTheCookieFactory.GameModel
         public Player(string name)
         {
             Name = name;
+        }
+
+        public List<Card> GetPlayableHandAsFollower(Card leadingCard)
+        {
+            var suitToMatch = leadingCard.Suit;
+
+            var cards = Hand.Where(x => x.Suit == suitToMatch);
+
+            if (cards.Count() > 0)
+                return cards.ToList();
+            else
+                return Hand.ToList();
         }
     }
 }
