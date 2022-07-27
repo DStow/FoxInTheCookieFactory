@@ -82,7 +82,9 @@ namespace FoxInTheCookieFactory.ConsoleApp
                 cardsToPickFrom = player.Hand;
             else
                 cardsToPickFrom = player.GetPlayableHandAsFollower(game.LeadingCard);
-   
+
+            cardsToPickFrom = cardsToPickFrom.OrderBy(x => x.Suit).ThenByDescending(x => x.Value).ToList();
+
 
             for(int i = 0; i < cardsToPickFrom.Count; i++)
             {
