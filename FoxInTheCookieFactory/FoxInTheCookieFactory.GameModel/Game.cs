@@ -18,10 +18,14 @@ namespace FoxInTheCookieFactory.GameModel
 
 
         private Delegates.MonarchPlayedDelegate monarchPlayedDelegate;
+        private Delegates.FoxPlayedDelegate foxPlayedDelegate;
+        private Delegates.WoodcutterPlayedDelegate woodcutterPlayedDelegate;
 
-        public Game(Delegates.MonarchPlayedDelegate monarchPlayedDelegate)
+        public Game(Delegates.MonarchPlayedDelegate monarchPlayedDelegate, Delegates.FoxPlayedDelegate foxPlayedDelegate, Delegates.WoodcutterPlayedDelegate woodcutterPlayedDelegate)
         {
             this.monarchPlayedDelegate = monarchPlayedDelegate;
+            this.foxPlayedDelegate = foxPlayedDelegate;
+            this.woodcutterPlayedDelegate = woodcutterPlayedDelegate;
         }
 
         public void Initilize(string player1Name = "Player 1", string player2Name = "Player 2")
@@ -93,6 +97,11 @@ namespace FoxInTheCookieFactory.GameModel
                     var playableCards = SpecialCardHelper.GetMonarchReactionPlayableCards(FollowingPlayer, card);
                     var pickedCard = monarchPlayedDelegate(this, FollowingPlayer, playableCards);
                     PlayPlayerCard(FollowingPlayer, pickedCard, null);
+                }
+                else if (card.Value == (int)Enumeration.SpecialCardEnum.Fox)
+                {
+                    var pickableCards = player.Hand.ToList();
+                    
                 }
             }
         }
