@@ -101,7 +101,23 @@ namespace FoxInTheCookieFactory.GameModel
                 else if (card.Value == (int)Enumeration.SpecialCardEnum.Fox)
                 {
                     var pickableCards = player.Hand.ToList();
-                    
+                    pickableCards.Remove(card); // Remove the curent card that has caused this
+                    var pickedCard = foxPlayedDelegate(this, player, DecreeCard, pickableCards);
+                    player.Hand.Add(DecreeCard);
+                    player.Hand.Remove(pickedCard);
+                    DecreeCard = pickedCard;
+                }
+                else if(card.Value == (int)Enumeration.SpecialCardEnum.Woodcutter)
+                {
+                    var topDeckCard = Deck.Cards[0];
+                    Deck.Cards.RemoveAt(0);
+                    player.Hand.Add(topDeckCard);
+                    var pickableCards = player.Hand.ToList();
+
+                    pickableCards.Remove(card); // Remove the current card that caused this
+                    var pickedCard = woodcutterPlayedDelegate(this, player, topDeckCard, pickableCards);
+                    Deck.Cards.Add(pickedCard);
+                    player.Hand.Remove(pickedCard);
                 }
             }
         }

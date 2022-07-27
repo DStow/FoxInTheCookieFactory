@@ -11,7 +11,7 @@ namespace FoxInTheCookieFactory.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var game = new Game(MonarchPlayed);
+            var game = new Game(MonarchPlayed, FoxPlayed, WoodcutterPlayed);
             game.Initilize("P1", "P2");
 
             // Starts the game loop
@@ -92,6 +92,8 @@ namespace FoxInTheCookieFactory.ConsoleApp
             // ToDo: Input check this
             int index = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine(player.Name + " has played a " + cardsToPickFrom[index]);
+
             return cardsToPickFrom[index];
         }
 
@@ -104,6 +106,37 @@ namespace FoxInTheCookieFactory.ConsoleApp
             }
 
             int index = Convert.ToInt32(Console.ReadLine());
+
+            return pickableCards[index];
+        }
+
+        static Card FoxPlayed(Game game, Player playedPlayer, Card decreeCard, List<Card> pickableCards)
+        {
+            Console.WriteLine(playedPlayer.Name + " has played a fox and must now pick a card to replace the decree card (" + decreeCard + "):");
+
+            for (int i = 0; i < pickableCards.Count; i++)
+            {
+                Console.WriteLine(i + ": " + pickableCards[i]);
+            }
+
+            int index = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("The new decree card is now " + pickableCards[index]);
+
+            return pickableCards[index];
+        }
+
+        static Card WoodcutterPlayed(Game game, Player playedPlayer, Card pickedUpCard, List<Card> pickableCards)
+        {
+            Console.WriteLine(playedPlayer.Name + " has played a woodcutter, picking up " + pickedUpCard + " from the deck. They must now replace it with one from their hand:");
+            for (int i = 0; i < pickableCards.Count; i++)
+            {
+                Console.WriteLine(i + ": " + pickableCards[i]);
+            }
+
+            int index = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine(pickableCards[index] + " has been put at the bottom of the deck");
 
             return pickableCards[index];
         }
