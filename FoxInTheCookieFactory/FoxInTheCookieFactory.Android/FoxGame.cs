@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FoxInTheCookieFactory.Android
 {
-    public class Game1 : Game
+    public class FoxGame : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+        public FoxGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
