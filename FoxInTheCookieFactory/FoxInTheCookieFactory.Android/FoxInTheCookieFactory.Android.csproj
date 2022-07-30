@@ -53,8 +53,10 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity1.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="CardContentManager.cs" />
+    <Compile Include="CardObject.cs" />
+    <Compile Include="FoxInTheCookieFactoryActivity.cs" />
+    <Compile Include="FoxGame.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,6 +9,9 @@ namespace FoxInTheCookieFactory.Android
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private GameModel.Game _foxGame;
+        private CardObject _decreeCardObject;
+
         public FoxGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -19,6 +22,10 @@ namespace FoxInTheCookieFactory.Android
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            _foxGame = new GameModel.Game(null, null, null);
+            _foxGame.Initilize();
+
+            _decreeCardObject = new CardObject(_foxGame.DecreeCard);
 
             base.Initialize();
         }
@@ -28,6 +35,7 @@ namespace FoxInTheCookieFactory.Android
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            CardContentManager.Instance.LoadContent(Content);
         }
 
         protected override void Update(GameTime gameTime)

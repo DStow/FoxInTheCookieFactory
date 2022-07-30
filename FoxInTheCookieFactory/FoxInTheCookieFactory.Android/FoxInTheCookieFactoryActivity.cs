@@ -15,16 +15,16 @@ namespace FoxInTheCookieFactory.Android
         ScreenOrientation = ScreenOrientation.FullUser,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize
     )]
-    public class Activity1 : AndroidGameActivity
+    public class FoxInTheCookieFactoryActivity : AndroidGameActivity
     {
-        private Game1 _game;
+        private FoxGame _game;
         private View _view;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            _game = new Game1();
+            _game = new FoxGame();
             _view = _game.Services.GetService(typeof(View)) as View;
 
             SetContentView(_view);
