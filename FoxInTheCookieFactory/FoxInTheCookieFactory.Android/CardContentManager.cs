@@ -37,7 +37,7 @@ namespace FoxInTheCookieFactory.Android
 
         public void LoadContent(ContentManager content)
         {
-            var suitPrefixes = new string[] { "K", "M", "B" };
+            var suitPrefixes = new string[] { "k", "m", "b" };
 
             foreach (var prefix in suitPrefixes)
             {

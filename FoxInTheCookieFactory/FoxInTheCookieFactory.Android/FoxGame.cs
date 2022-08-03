@@ -55,10 +55,12 @@ namespace FoxInTheCookieFactory.Android
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            _spriteBatch.Begin();
             // TODO: Add your drawing code here
             _decreeCardObject.DrawCard(_spriteBatch, new Vector2(25, 25), 0);
 
             base.Draw(gameTime);
+            _spriteBatch.End();
         }
     }
 }
