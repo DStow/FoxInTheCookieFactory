@@ -47,5 +47,10 @@ namespace FoxInTheCookieFactory.Android
                 }
             }
         }
+
+        public Texture2D GetCardTexture(string key)
+        {
+            return _cardFaces[key];
+        }
     }
 }

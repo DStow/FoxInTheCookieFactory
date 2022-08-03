@@ -9,8 +9,9 @@ namespace FoxInTheCookieFactory.Android
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private GameModel.Game _foxGame;
+        public static GameModel.Game FoxGameModel;
         private CardObject _decreeCardObject;
+        private Scenes.BaseScene _currentScene;
 
         public FoxGame()
         {
@@ -22,10 +23,12 @@ namespace FoxInTheCookieFactory.Android
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _foxGame = new GameModel.Game(null, null, null);
-            _foxGame.Initilize();
+            FoxGameModel = new GameModel.Game(null, null, null);
+            FoxGameModel.Initilize();
 
-            _decreeCardObject = new CardObject(_foxGame.DecreeCard);
+            _currentScene = new Scenes.CardPickScene();
+
+            _decreeCardObject = new CardObject(FoxGameModel.DecreeCard);
 
             base.Initialize();
         }
@@ -53,6 +56,7 @@ namespace FoxInTheCookieFactory.Android
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _decreeCardObject.DrawCard(_spriteBatch, new Vector2(25, 25), 0);
 
             base.Draw(gameTime);
         }
