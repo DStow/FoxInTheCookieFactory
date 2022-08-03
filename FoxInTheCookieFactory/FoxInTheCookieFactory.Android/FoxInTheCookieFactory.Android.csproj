@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="CardContentManager.cs" />
     <Compile Include="CardObject.cs" />
+    <Compile Include="Core\Camera.cs" />
+    <Compile Include="Core\RectangleF.cs" />
+    <Compile Include="Enumeration.cs" />
     <Compile Include="FoxInTheCookieFactoryActivity.cs" />
     <Compile Include="FoxGame.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
