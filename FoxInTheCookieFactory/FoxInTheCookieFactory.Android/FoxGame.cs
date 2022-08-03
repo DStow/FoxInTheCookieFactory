@@ -12,6 +12,7 @@ namespace FoxInTheCookieFactory.Android
         public static GameModel.Game FoxGameModel;
         private CardObject _decreeCardObject;
         private Scenes.BaseScene _currentScene;
+        public static int ScreenWidth = 0;
 
         public FoxGame()
         {
@@ -23,12 +24,12 @@ namespace FoxInTheCookieFactory.Android
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            ScreenWidth = Window.ClientBounds.Width;
+
             FoxGameModel = new GameModel.Game(null, null, null);
             FoxGameModel.Initilize();
 
             _currentScene = new Scenes.CardPickScene();
-
-            _decreeCardObject = new CardObject(FoxGameModel.DecreeCard);
 
             base.Initialize();
         }
@@ -47,6 +48,7 @@ namespace FoxInTheCookieFactory.Android
                 Exit();
 
             // TODO: Add your update logic here
+            _currentScene.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -57,8 +59,7 @@ namespace FoxInTheCookieFactory.Android
 
             _spriteBatch.Begin();
             // TODO: Add your drawing code here
-            _decreeCardObject.DrawCard(_spriteBatch, new Vector2(25, 25), 0);
-
+            _currentScene.Draw(_spriteBatch);
             base.Draw(gameTime);
             _spriteBatch.End();
         }

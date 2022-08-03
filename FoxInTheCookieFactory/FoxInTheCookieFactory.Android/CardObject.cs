@@ -24,7 +24,7 @@ namespace FoxInTheCookieFactory.Android
         public void DrawCard(SpriteBatch spriteBatch, Vector2 position, int width)
         {
             var cardTexture = CardContentManager.Instance.GetCardTexture(BaseCard.Suit.ToString()[0].ToString().ToLower() + BaseCard.Value);
-            spriteBatch.Draw(cardTexture, position, Color.White);
+            spriteBatch.Draw(cardTexture, position, new Rectangle((int)position.X, (int)position.Y, width, 500), Color.White);
         }
     }
 }
