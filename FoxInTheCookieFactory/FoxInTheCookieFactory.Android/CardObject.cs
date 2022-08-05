@@ -16,15 +16,19 @@ namespace FoxInTheCookieFactory.Android
     internal class CardObject
     {
         public GameModel.Card BaseCard { get; set; }
+        private float _cardRatio = 1.39f;
+        private Texture2D _cardTexture;
+
         public CardObject(GameModel.Card baseCard)
         {
             BaseCard = baseCard;
+            _cardTexture = CardContentManager.Instance.GetCardTexture(BaseCard.Suit.ToString()[0].ToString().ToLower() + BaseCard.Value);
         }
 
         public void DrawCard(SpriteBatch spriteBatch, Vector2 position, int width)
         {
-            var cardTexture = CardContentManager.Instance.GetCardTexture(BaseCard.Suit.ToString()[0].ToString().ToLower() + BaseCard.Value);
-            spriteBatch.Draw(cardTexture, position, new Rectangle((int)position.X, (int)position.Y, width, 500), Color.White);
+            var drawArea = FoxGame.Camera.ComputeWorldAreaToPixelRectangle(position, new Vector2(width, _cardRatio * width), false);
+            spriteBatch.Draw(_cardTexture, position, drawArea, Color.White);
         }
     }
 }
