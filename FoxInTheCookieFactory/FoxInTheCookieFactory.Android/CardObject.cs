@@ -28,7 +28,7 @@ namespace FoxInTheCookieFactory.Android
         public void DrawCard(SpriteBatch spriteBatch, Vector2 position, int width)
         {
             var drawArea = FoxGame.Camera.ComputeWorldAreaToPixelRectangle(position, new Vector2(width, _cardRatio * width), false);
-            spriteBatch.Draw(_cardTexture, position, drawArea, Color.White);
+            spriteBatch.Draw(_cardTexture, drawArea, Color.White);
         }
     }
 }
