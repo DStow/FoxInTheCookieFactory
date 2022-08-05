@@ -13,6 +13,7 @@ namespace FoxInTheCookieFactory.Android
         private CardObject _decreeCardObject;
         private Scenes.BaseScene _currentScene;
         public static int ScreenWidth = 0;
+        public static Core.Camera Camera;
 
         public FoxGame()
         {
@@ -25,6 +26,8 @@ namespace FoxInTheCookieFactory.Android
         {
             // TODO: Add your initialization logic here
             ScreenWidth = Window.ClientBounds.Width;
+
+            Camera = new Core.Camera(Window.ClientBounds.Width, Window.ClientBounds.Height, Enumeration.CameraFixedSideEnum.Width, 1000);
 
             FoxGameModel = new GameModel.Game(null, null, null);
             FoxGameModel.Initilize();
