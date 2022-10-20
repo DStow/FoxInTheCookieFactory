@@ -22,8 +22,8 @@ namespace FoxInTheCookieFactory.Android.Scenes
         public override void Update(GameTime gameTime)
         {
             _decreeCard = new CardObject(FoxGame.FoxGameModel.DecreeCard);
-            _borderWidth = (int)(FoxGame.ScreenWidth * 0.05);
-            _cardWidth = (FoxGame.ScreenWidth / 2) - _borderWidth - (_borderWidth / 2);
+            _borderWidth = (int)(FoxGame.Camera.VisibleWorldWidth * 0.05);
+            _cardWidth = ((int)FoxGame.Camera.VisibleWorldWidth / 2) - _borderWidth - (_borderWidth / 2);
 
             base.Update(gameTime);
         }

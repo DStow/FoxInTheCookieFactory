@@ -26,6 +26,7 @@ namespace FoxInTheCookieFactory.Android
         {
             // TODO: Add your initialization logic here
             ScreenWidth = Window.ClientBounds.Width;
+            Camera = new Core.Camera(ScreenWidth, Window.ClientBounds.Height, Enumeration.CameraFixedSideEnum.Width, 1000);
 
             Camera = new Core.Camera(Window.ClientBounds.Width, Window.ClientBounds.Height, Enumeration.CameraFixedSideEnum.Width, 1000);
 
